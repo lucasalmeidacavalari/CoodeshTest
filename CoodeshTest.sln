@@ -23,24 +23,25 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoodeshTest.Data.Dependency
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoodeshTest.Api", "CoodeshTest.Api\CoodeshTest.Api.csproj", "{3F8DCB3F-C132-48D0-B2B1-6EF303CBF2ED}"
 EndProject
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Coodesh.React.ui", "Coodesh.React.ui\", "{E50D8822-A238-4A23-9C62-EB47B4999F18}"
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Coodesh.React.ui", "Coodesh.React.Ui\", "{E50D8822-A238-4A23-9C62-EB47B4999F18}"
 	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.8"
 		Debug.AspNetCompiler.VirtualPath = "/localhost_57704"
-		Debug.AspNetCompiler.PhysicalPath = "Coodesh.React.ui\"
+		Debug.AspNetCompiler.PhysicalPath = "Coodesh.React.Ui\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_57704\"
 		Debug.AspNetCompiler.Updateable = "true"
 		Debug.AspNetCompiler.ForceOverwrite = "true"
 		Debug.AspNetCompiler.FixedNames = "false"
 		Debug.AspNetCompiler.Debug = "True"
 		Release.AspNetCompiler.VirtualPath = "/localhost_57704"
-		Release.AspNetCompiler.PhysicalPath = "Coodesh.React.ui\"
+		Release.AspNetCompiler.PhysicalPath = "Coodesh.React.Ui\"
 		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_57704\"
 		Release.AspNetCompiler.Updateable = "true"
 		Release.AspNetCompiler.ForceOverwrite = "true"
 		Release.AspNetCompiler.FixedNames = "false"
 		Release.AspNetCompiler.Debug = "False"
 		VWDPort = "57704"
-		SlnRelativePath = "Coodesh.React.ui\"
+		SlnRelativePath = "Coodesh.React.Ui\"
 	EndProjectSection
 EndProject
 Global
@@ -70,7 +71,6 @@ Global
 		{3F8DCB3F-C132-48D0-B2B1-6EF303CBF2ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3F8DCB3F-C132-48D0-B2B1-6EF303CBF2ED}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E50D8822-A238-4A23-9C62-EB47B4999F18}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E50D8822-A238-4A23-9C62-EB47B4999F18}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E50D8822-A238-4A23-9C62-EB47B4999F18}.Release|Any CPU.ActiveCfg = Debug|Any CPU
 		{E50D8822-A238-4A23-9C62-EB47B4999F18}.Release|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
