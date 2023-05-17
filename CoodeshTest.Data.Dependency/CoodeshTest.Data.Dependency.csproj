@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CoodeshTest.Application\CoodeshTest.Application.csproj" />
+    <ProjectReference Include="..\CoodeshTest.Domain\CoodeshTest.Domain.csproj" />
+    <ProjectReference Include="..\CoodeshTest.Infra.Data\CoodeshTest.Infra.Data.csproj" />
+  </ItemGroup>
+
+</Project>
