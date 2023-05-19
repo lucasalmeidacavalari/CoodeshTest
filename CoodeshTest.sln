@@ -19,7 +19,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoodeshTest.Domain", "Coode
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoodeshTest.Infra.Data", "CoodeshTest.Infra.Data\CoodeshTest.Infra.Data.csproj", "{19F8BDF3-05DD-4CEC-A0C0-6F188DA19C83}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoodeshTest.Data.Dependency", "CoodeshTest.Data.Dependency\CoodeshTest.Data.Dependency.csproj", "{CB4C5A09-88B7-490C-82FF-61A653548F85}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoodeshTest.Infra.Dependency", "CoodeshTest.Data.Dependency\CoodeshTest.Infra.Dependency.csproj", "{CB4C5A09-88B7-490C-82FF-61A653548F85}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoodeshTest.Api", "CoodeshTest.Api\CoodeshTest.Api.csproj", "{3F8DCB3F-C132-48D0-B2B1-6EF303CBF2ED}"
 EndProject
@@ -46,7 +46,7 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Coodesh.React.Ui", "Coodesh
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "6 - Test", "6 - Test", "{D572B3E5-7025-45BD-8EA7-432F6F46B404}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoodeshTest.Domain.Tests", "CoodeshTest.Domain.Tests\CoodeshTest.Domain.Tests.csproj", "{2ABF6452-81E6-4FD8-8CB3-E89F148E5D6E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoodeshTest.Tests", "CoodeshTest.Domain.Tests\CoodeshTest.Tests.csproj", "{2ABF6452-81E6-4FD8-8CB3-E89F148E5D6E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

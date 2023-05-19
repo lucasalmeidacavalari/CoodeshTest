@@ -1,7 +1,7 @@
 using CoodeshTest.Domain.Entities;
 using FluentAssertions;
 
-namespace CoodeshTest.Domain.Tests
+namespace CoodeshTest.Tests.Domain
 {
     public class CreatorUnitTest1
     {
