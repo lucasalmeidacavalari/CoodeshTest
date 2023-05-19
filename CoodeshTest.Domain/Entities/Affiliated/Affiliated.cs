@@ -11,6 +11,8 @@ namespace CoodeshTest.Domain.Entities
     {
         public int AffiliatedId { get; private set; }
         public string Name { get; private set; }
+        public ICollection<Transaction> Transactions { get; set; }
+
 
         public Affiliated(string name)
         {

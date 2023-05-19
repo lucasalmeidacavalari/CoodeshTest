@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CoodeshTest.Domain.Interfaces
 {
-    public interface IAffiliated
+    public interface IAffiliatedRepository
     {
         Task<IEnumerable<Affiliated>> GetAffiliateds();
         Task<Affiliated> GetById(int? affiliatedId);

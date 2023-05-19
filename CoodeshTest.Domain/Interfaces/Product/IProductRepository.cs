@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CoodeshTest.Domain.Interfaces
 {
-    public interface IProduct
+    public interface IProductRepository
     {
         Task<IEnumerable<Product>> GetProducts();
         Task<Product> GetById(int? productId);

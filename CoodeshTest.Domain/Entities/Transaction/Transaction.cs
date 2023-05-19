@@ -6,7 +6,6 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Xml.Linq;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace CoodeshTest.Domain.Entities
 {
@@ -16,11 +15,11 @@ namespace CoodeshTest.Domain.Entities
         public DateTime DateTransaction { get; private set; }
         public decimal Price { get; private set; }
         public int CreatorId { get; set; }
-        public ICollection<Creator> Creators { get; set; }
+        public Creator Creator { get; set; }
         public int AffiliatedId { get; set; }
-        public ICollection<Affiliated> Affiliates { get; set; }
+        public Affiliated Affiliated { get; set; }
         public int ProductId { get; set; }
-        public ICollection<Product> Products { get; set; }
+        public Product Product { get; set; }
 
         public Transaction(DateTime dateTransaction, decimal price)
         {

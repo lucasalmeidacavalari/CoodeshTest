@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CoodeshTest.Domain.Interfaces
 {
-    public interface ICreator
+    public interface ICreatorRepository
     {
         Task<IEnumerable<Creator>> GetCreatorsAsync();
         Task<Creator> GetById(int? creatorId);

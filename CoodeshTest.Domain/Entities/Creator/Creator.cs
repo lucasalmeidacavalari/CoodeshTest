@@ -11,6 +11,8 @@ namespace CoodeshTest.Domain.Entities
     {
         public int CreatorId { get; private set; }
         public string Name { get; private set; }
+        public ICollection<Product> Products { get; set; }
+        public ICollection<Transaction> Transactions { get; set; }
 
         public Creator(string name)
         {
