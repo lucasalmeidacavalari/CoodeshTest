@@ -39,7 +39,7 @@ namespace CoodeshTest.Infra.Data.Repositories
             return await _ctx.Transactions.Include(_ => _.Creator).Include(_ => _.Product).Include(_ => _.Affiliated).Where(_ => _.TransactionId == transactionId).SingleOrDefaultAsync();
         }
 
-        public async Task<IEnumerable<Transaction>> GetProducts()
+        public async Task<IEnumerable<Transaction>> GetTransactions()
         {
             return await _ctx.Transactions.Include(_ => _.Creator).Include(_ => _.Product).Include(_ => _.Affiliated).ToListAsync();
         }

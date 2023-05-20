@@ -1,14 +1,12 @@
-﻿using CoodeshTest.Domain.Interfaces;
+﻿using CoodeshTest.Application.App;
+using CoodeshTest.Application.Config;
+using CoodeshTest.Application.Interfaces;
+using CoodeshTest.Domain.Interfaces;
 using CoodeshTest.Infra.Data.Context;
 using CoodeshTest.Infra.Data.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CoodeshTest.Infra.Dependency
 {
@@ -21,7 +19,11 @@ namespace CoodeshTest.Infra.Dependency
             services.AddScoped<IAffiliatedRepository, AffiliatedRepository>();
             services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped<ITransactionRepository, TransactionRepository>();
-
+            services.AddScoped<ICreatorService, CreatorService>();
+            services.AddScoped<IAffiliatedService, AffiliatedService>();
+            services.AddScoped<IProductService, ProductService>();
+            services.AddScoped<ITransactionService, TransactionService>();
+            services.AddAutoMapper(typeof(DominioToDtoProfile));
             return services;
         }
     }

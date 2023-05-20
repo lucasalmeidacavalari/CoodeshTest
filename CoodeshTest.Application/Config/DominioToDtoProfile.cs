@@ -15,7 +15,7 @@ namespace CoodeshTest.Application.Config
         {
             CreateMap<Creator, CreatorDto>().ReverseMap();
             CreateMap<Affiliated, AffiliatedDto>().ReverseMap();
-            CreateMap<Product, ProductDro>().ReverseMap();
+            CreateMap<Product, ProductDto>().ReverseMap();
             CreateMap<Transaction, TransactionDto>().ReverseMap();
         }
     }

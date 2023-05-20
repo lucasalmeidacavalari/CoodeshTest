@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CoodeshTest.Application.Dto
 {
-    public class ProductDro
+    public class ProductDto
     {
         public int ProductId { get; private set; }
         [Required(ErrorMessage = "The name is required!")]

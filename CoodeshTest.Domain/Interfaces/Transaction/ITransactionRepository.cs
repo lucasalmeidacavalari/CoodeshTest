@@ -9,7 +9,7 @@ namespace CoodeshTest.Domain.Interfaces
 {
     public interface ITransactionRepository
     {
-        Task<IEnumerable<Transaction>> GetProducts();
+        Task<IEnumerable<Transaction>> GetTransactions();
         Task<Transaction> GetById(int? transactionId);
         Task<Transaction> Add(Transaction transaction);
         Task<Transaction> Update(Transaction transaction);
