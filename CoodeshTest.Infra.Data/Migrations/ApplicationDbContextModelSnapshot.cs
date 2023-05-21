@@ -39,6 +39,27 @@ namespace CoodeshTest.Infra.Data.Migrations
                     b.ToTable("Affiliates");
                 });
 
+            modelBuilder.Entity("CoodeshTest.Domain.Entities.Collaborator", b =>
+                {
+                    b.Property<int>("CollaboratorId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CollaboratorId"));
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("CollaboratorId");
+
+                    b.ToTable("Collaborators");
+                });
+
             modelBuilder.Entity("CoodeshTest.Domain.Entities.Creator", b =>
                 {
                     b.Property<int>("CreatorId")

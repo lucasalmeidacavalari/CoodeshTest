@@ -13,6 +13,7 @@ namespace CoodeshTest.Application.Config
     {
         public DominioToDtoProfile()
         {
+            CreateMap<Collaborator, CollaboratorDto>().ReverseMap();
             CreateMap<Creator, CreatorDto>().ReverseMap();
             CreateMap<Affiliated, AffiliatedDto>().ReverseMap();
             CreateMap<Product, ProductDto>().ReverseMap();

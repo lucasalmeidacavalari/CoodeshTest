@@ -25,6 +25,20 @@ namespace CoodeshTest.Infra.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Collaborators",
+                columns: table => new
+                {
+                    CollaboratorId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Password = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Collaborators", x => x.CollaboratorId);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Creators",
                 columns: table => new
                 {
@@ -63,7 +77,7 @@ namespace CoodeshTest.Infra.Data.Migrations
                 {
                     TransactionId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    DateTransaction = table.Column<DateTime>(type: "datetime", nullable: false),
+                    DateTransaction = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Price = table.Column<decimal>(type: "decimal(10,2)", precision: 10, scale: 2, nullable: false),
                     CreatorId = table.Column<int>(type: "int", nullable: true),
                     AffiliatedId = table.Column<int>(type: "int", nullable: true),
@@ -113,6 +127,9 @@ namespace CoodeshTest.Infra.Data.Migrations
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "Collaborators");
+
             migrationBuilder.DropTable(
                 name: "Transactions");
 

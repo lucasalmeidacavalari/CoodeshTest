@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CoodeshTest.Infra.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230521033852_Initial")]
+    [Migration("20230521215655_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -40,6 +40,27 @@ namespace CoodeshTest.Infra.Data.Migrations
                     b.HasKey("AffiliatedId");
 
                     b.ToTable("Affiliates");
+                });
+
+            modelBuilder.Entity("CoodeshTest.Domain.Entities.Collaborator", b =>
+                {
+                    b.Property<int>("CollaboratorId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CollaboratorId"));
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("CollaboratorId");
+
+                    b.ToTable("Collaborators");
                 });
 
             modelBuilder.Entity("CoodeshTest.Domain.Entities.Creator", b =>

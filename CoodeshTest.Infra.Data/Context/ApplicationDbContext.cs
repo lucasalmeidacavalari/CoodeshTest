@@ -12,7 +12,7 @@ namespace CoodeshTest.Infra.Data.Context
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {}
-
+        public DbSet<Collaborator> Collaborators { get; set; }
         public DbSet<Creator> Creators { get; set; }
         public DbSet<Affiliated> Affiliates { get; set; }
         public DbSet<Product> Products { get; set; }

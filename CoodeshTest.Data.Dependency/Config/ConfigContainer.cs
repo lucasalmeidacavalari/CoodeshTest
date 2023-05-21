@@ -15,10 +15,14 @@ namespace CoodeshTest.Infra.Dependency
         public static IServiceCollection AddInfrastrucure(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"), b => b.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName)));
+            //Repositorys
+            services.AddScoped<ICollaboratorRepository, CollaboratorRepository>();
             services.AddScoped<ICreatorRepository, CreatorRepository>();
             services.AddScoped<IAffiliatedRepository, AffiliatedRepository>();
             services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped<ITransactionRepository, TransactionRepository>();
+            //Services
+            services.AddScoped<ICollaboratorService, CollaboratorService>();
             services.AddScoped<ICreatorService, CreatorService>();
             services.AddScoped<IAffiliatedService, AffiliatedService>();
             services.AddScoped<IProductService, ProductService>();
