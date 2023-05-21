@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CoodeshTest.Infra.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230520201711_Initial")]
+    [Migration("20230521033852_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -67,7 +67,7 @@ namespace CoodeshTest.Infra.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ProductId"));
 
-                    b.Property<int>("CreatorId")
+                    b.Property<int?>("CreatorId")
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
@@ -93,10 +93,10 @@ namespace CoodeshTest.Infra.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TransactionId"));
 
-                    b.Property<int>("AffiliatedId")
+                    b.Property<int?>("AffiliatedId")
                         .HasColumnType("int");
 
-                    b.Property<int>("CreatorId")
+                    b.Property<int?>("CreatorId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("DateTransaction")
@@ -106,7 +106,7 @@ namespace CoodeshTest.Infra.Data.Migrations
                         .HasPrecision(10, 2)
                         .HasColumnType("decimal(10,2)");
 
-                    b.Property<int>("ProductId")
+                    b.Property<int?>("ProductId")
                         .HasColumnType("int");
 
                     b.HasKey("TransactionId");
@@ -124,9 +124,7 @@ namespace CoodeshTest.Infra.Data.Migrations
                 {
                     b.HasOne("CoodeshTest.Domain.Entities.Creator", "Creator")
                         .WithMany("Products")
-                        .HasForeignKey("CreatorId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("CreatorId");
 
                     b.Navigation("Creator");
                 });
@@ -135,21 +133,15 @@ namespace CoodeshTest.Infra.Data.Migrations
                 {
                     b.HasOne("CoodeshTest.Domain.Entities.Affiliated", "Affiliated")
                         .WithMany("Transactions")
-                        .HasForeignKey("AffiliatedId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("AffiliatedId");
 
                     b.HasOne("CoodeshTest.Domain.Entities.Creator", "Creator")
                         .WithMany("Transactions")
-                        .HasForeignKey("CreatorId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("CreatorId");
 
                     b.HasOne("CoodeshTest.Domain.Entities.Product", "Product")
                         .WithMany("Transactions")
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ProductId");
 
                     b.Navigation("Affiliated");
 

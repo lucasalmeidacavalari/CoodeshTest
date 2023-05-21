@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace CoodeshTest.Domain.Entities
@@ -11,6 +12,7 @@ namespace CoodeshTest.Domain.Entities
     {
         public int AffiliatedId { get; private set; }
         public string Name { get; private set; }
+        [JsonIgnore]
         public ICollection<Transaction> Transactions { get; set; }
 
 

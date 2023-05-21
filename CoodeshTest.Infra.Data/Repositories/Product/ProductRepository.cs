@@ -46,8 +46,8 @@ namespace CoodeshTest.Infra.Data.Repositories
 
         public async Task<IEnumerable<Product>> GetProducts()
         {
-            return await _ctx.Products.Include(_ => _.Creator).ToListAsync();
+            return await _ctx.Products.Include(c => c.Creator).ToListAsync();
         }
-        
+
     }
 }

@@ -24,6 +24,7 @@ namespace CoodeshTest.Infra.Dependency
             services.AddScoped<IProductService, ProductService>();
             services.AddScoped<ITransactionService, TransactionService>();
             services.AddAutoMapper(typeof(DominioToDtoProfile));
+
             return services;
         }
     }

@@ -43,7 +43,6 @@ namespace CoodeshTest.Infra.Data.Repositories
         {
             return await _ctx.Affiliates.ToListAsync();
         }
-
         public async Task<Affiliated> GetById(int? affiliatedId)
         {
             return await _ctx.Affiliates.FindAsync(affiliatedId);

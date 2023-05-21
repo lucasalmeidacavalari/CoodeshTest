@@ -45,7 +45,7 @@ namespace CoodeshTest.Infra.Data.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Price = table.Column<decimal>(type: "decimal(10,2)", precision: 10, scale: 2, nullable: false),
-                    CreatorId = table.Column<int>(type: "int", nullable: false)
+                    CreatorId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -54,8 +54,7 @@ namespace CoodeshTest.Infra.Data.Migrations
                         name: "FK_Products_Creators_CreatorId",
                         column: x => x.CreatorId,
                         principalTable: "Creators",
-                        principalColumn: "CreatorId",
-                        onDelete: ReferentialAction.Restrict);
+                        principalColumn: "CreatorId");
                 });
 
             migrationBuilder.CreateTable(
@@ -64,11 +63,11 @@ namespace CoodeshTest.Infra.Data.Migrations
                 {
                     TransactionId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    DateTransaction = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    DateTransaction = table.Column<DateTime>(type: "datetime", nullable: false),
                     Price = table.Column<decimal>(type: "decimal(10,2)", precision: 10, scale: 2, nullable: false),
-                    CreatorId = table.Column<int>(type: "int", nullable: false),
-                    AffiliatedId = table.Column<int>(type: "int", nullable: false),
-                    ProductId = table.Column<int>(type: "int", nullable: false)
+                    CreatorId = table.Column<int>(type: "int", nullable: true),
+                    AffiliatedId = table.Column<int>(type: "int", nullable: true),
+                    ProductId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -77,20 +76,17 @@ namespace CoodeshTest.Infra.Data.Migrations
                         name: "FK_Transactions_Affiliates_AffiliatedId",
                         column: x => x.AffiliatedId,
                         principalTable: "Affiliates",
-                        principalColumn: "AffiliatedId",
-                        onDelete: ReferentialAction.Restrict);
+                        principalColumn: "AffiliatedId");
                     table.ForeignKey(
                         name: "FK_Transactions_Creators_CreatorId",
                         column: x => x.CreatorId,
                         principalTable: "Creators",
-                        principalColumn: "CreatorId",
-                        onDelete: ReferentialAction.Restrict);
+                        principalColumn: "CreatorId");
                     table.ForeignKey(
                         name: "FK_Transactions_Products_ProductId",
                         column: x => x.ProductId,
                         principalTable: "Products",
-                        principalColumn: "ProductId",
-                        onDelete: ReferentialAction.Restrict);
+                        principalColumn: "ProductId");
                 });
 
             migrationBuilder.CreateIndex(

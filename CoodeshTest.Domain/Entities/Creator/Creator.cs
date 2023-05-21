@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace CoodeshTest.Domain.Entities
@@ -11,7 +12,9 @@ namespace CoodeshTest.Domain.Entities
     {
         public int CreatorId { get; private set; }
         public string Name { get; private set; }
+        [JsonIgnore]
         public ICollection<Product> Products { get; set; }
+        [JsonIgnore]
         public ICollection<Transaction> Transactions { get; set; }
 
         public Creator(string name)

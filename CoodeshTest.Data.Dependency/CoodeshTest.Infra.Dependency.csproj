@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\CoodeshTest.Application\CoodeshTest.Application.csproj" />
     <ProjectReference Include="..\CoodeshTest.Domain\CoodeshTest.Domain.csproj" />
     <ProjectReference Include="..\CoodeshTest.Infra.Data\CoodeshTest.Infra.Data.csproj" />

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CoodeshTest.Domain.Entities;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -9,10 +10,7 @@ namespace CoodeshTest.Application.Dto
 {
     public class CreatorDto
     {
-        public int CreatorId { get; private set; }
-        [Required(ErrorMessage = "The name is required!")]
-        [MinLength(3)]
-        [MaxLength(100)]
-        public string Name { get; private set; }
+        public int CreatorId { get; set; }
+        public string Name { get; set; }
     }
 }

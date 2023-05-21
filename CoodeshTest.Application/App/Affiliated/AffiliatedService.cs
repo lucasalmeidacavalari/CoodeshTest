@@ -38,14 +38,14 @@ namespace CoodeshTest.Application.App
 
         public async Task<IEnumerable<AffiliatedDto>> GetAffiliateds()
         {
-            var affiliateds = _rep.GetAffiliateds();
+            var affiliateds = await _rep.GetAffiliateds();
             return _map.Map<IEnumerable<AffiliatedDto>>(affiliateds);
         }
 
         public async Task<AffiliatedDto> GetById(int? affiliatedId)
         {
-            var affiliateds = _rep.GetById(affiliatedId);
-            return _map.Map<AffiliatedDto>(affiliateds);
+            var affiliated = await _rep.GetById(affiliatedId);
+            return _map.Map<AffiliatedDto>(affiliated);
         }
         
     }

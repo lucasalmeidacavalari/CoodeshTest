@@ -7,21 +7,21 @@ namespace CoodeshTest.Application.Dto
 {
     public class TransactionDto
     {
-        public int TransactionId { get; private set; }
-        public DateTime DateTransaction { get; private set; }
+        public int TransactionId { get; set; }
+        public DateTime DateTransaction { get; set; }
         [Column(TypeName = "decimal(18,2)")]
         [DisplayFormat(DataFormatString = "{0:C2}")]
         [DataType(DataType.Currency)]
         [DisplayName("Price")]
-        public decimal Price { get; private set; }
+        public decimal Price { get; set; }
         [DisplayName("Creators")]
-        public int CreatorId { get; set; }
-        public Creator Creator { get; set; }
+        public int? CreatorId { get; set; }
+        public Creator? Creator { get; set; }
         [DisplayName("Affiliates")]
-        public int AffiliatedId { get; set; }
-        public Affiliated Affiliated { get; set; }
+        public int? AffiliatedId { get; set; }
+        public Affiliated? Affiliated { get; set; }
         [DisplayName("Products")]
-        public int ProductId { get; set; }
-        public Product Product { get; set; }
+        public int? ProductId { get; set; }
+        public Product? Product { get; set; }
     }
 }

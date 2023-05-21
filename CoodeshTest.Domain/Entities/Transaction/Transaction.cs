@@ -14,12 +14,12 @@ namespace CoodeshTest.Domain.Entities
         public int TransactionId { get; private set; }
         public DateTime DateTransaction { get; private set; }
         public decimal Price { get; private set; }
-        public int CreatorId { get; set; }
-        public Creator Creator { get; set; }
-        public int AffiliatedId { get; set; }
-        public Affiliated Affiliated { get; set; }
-        public int ProductId { get; set; }
-        public Product Product { get; set; }
+        public int? CreatorId { get; set; }
+        public Creator? Creator { get; set; }
+        public int? AffiliatedId { get; set; }
+        public Affiliated? Affiliated { get; set; }
+        public int? ProductId { get; set; }
+        public Product? Product { get; set; }
 
         public Transaction(DateTime dateTransaction, decimal price)
         {
@@ -42,8 +42,8 @@ namespace CoodeshTest.Domain.Entities
 
         private void ValidateDomain(DateTime dateTransaction, decimal price)
         {
-            DomainExceptionValidation.When(string.IsNullOrEmpty(dateTransaction.ToString()) || !ValidateDateFormat(dateTransaction.ToString()),
-            "Invalid date. Date is required or has invalid format");
+            DomainExceptionValidation.When(dateTransaction == DateTime.MinValue || !ValidateDateFormat(dateTransaction.ToString()),
+                "Invalid date. Date is required or has an invalid format.");
             DomainExceptionValidation.When(price < 0,
                 "Invalid price value.");
 
@@ -51,11 +51,11 @@ namespace CoodeshTest.Domain.Entities
             Price = price;
         }
 
-        public static bool ValidateDateFormat(string dateString)
+        private bool ValidateDateFormat(string date)
         {
-            string standard = @"^\d{5}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}-\d{2}:\d{2}$";
-
-            return Regex.IsMatch(dateString, standard);
+            DateTime parsedDate;
+            return DateTime.TryParse(date, out parsedDate);
         }
+       
     }
 }
