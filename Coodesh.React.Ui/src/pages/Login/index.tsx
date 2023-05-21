@@ -1,40 +1,44 @@
-import './register.scss';
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import config from '../../appsettings.json'
 
-export default function Register() {
+import './login.scss';
+
+export default function Login() {
   const apiUrl = config.ConfigSettings.DEFAULT;
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  async function handleRegister(e: any) {
+  async function handleLogin(e: any) {
     e.preventDefault();
-    axios.post(apiUrl + '/Collaborator', { Email: email, Password: password })
+    axios.get(apiUrl + '/Collaborator?Email=' + email + '&Password=' + password)
       .then(response => {
-        navigate('/home', { replace: true })
+        if (response.data[0]) {
+          navigate('/home', { replace: true })
+        }else{
+          alert("Usuario Incorreto!")
+        }
       })
       .catch(error => {
-        console.log(error)
-        alert("A dados inexistente ou E-mail já cadastrado!");
+        alert(error);
       });
   }
 
   return (
-    <div className="container-home" onSubmit={handleRegister}>
+    <div className="container-home" onSubmit={handleLogin}>
       <h1>Coodesh Test</h1>
-      <span>Crie uma nova conta!</span>
+      <span>Aplicação para exportação e parsing de arquivo</span>
 
       <form className='form-home'>
         <input type="email" placeholder='Digite seu email...' name="email" id="email" value={email} onChange={e => setEmail(e.target.value)} />
         <input type="password" placeholder='*****' name="password" id="password" value={password} onChange={e => setPassword(e.target.value)} />
-        <button type="submit">Registrar</button>
+        <button type="submit">Acessar</button>
       </form>
 
-      <Link className='button-link' to={'/'}>
-        Já possui uma conta? Faça login!
+      <Link className='button-link' to={'/register'}>
+        Não possui uma conta ? Cadastra-se!
       </Link>
     </div>
   );

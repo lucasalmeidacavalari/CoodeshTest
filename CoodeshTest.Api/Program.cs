@@ -13,6 +13,16 @@ namespace CoodeshTest.Api
         {
             var builder = WebApplication.CreateBuilder(args);
 
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("AllowSpecificOrigin", builder =>
+                {
+                    builder.WithOrigins("http://localhost:3000")
+                           .AllowAnyMethod()
+                           .AllowAnyHeader();
+                });
+            });
+
             // Add services to the container.
             builder.Services.AddControllers();
             builder.Services.AddEndpointsApiExplorer();
@@ -20,6 +30,7 @@ namespace CoodeshTest.Api
             builder.Services.AddInfrastrucure(builder.Configuration);
 
             var app = builder.Build();
+            app.UseCors("AllowSpecificOrigin");
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())

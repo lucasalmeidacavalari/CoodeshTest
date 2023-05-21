@@ -24,13 +24,18 @@ namespace CoodeshTest.Application.App
 
         public async Task<CollaboratorDto> Add(CollaboratorDto collaborator)
         {
+            var _exist = await _rep.GetByEmail(collaborator.Email);
+            if (_exist != null)
+            {
+                throw new Exception("Usuario já existe com E-mail");
+            }
             var _collaborator = _map.Map<Collaborator>(collaborator);
             await _rep.Add(_collaborator);
             return collaborator;
         }
         public async Task<CollaboratorDto> Remove(CollaboratorDto collaborator)
         {
-            var _collaborator = _rep.GetById(collaborator.CollaboratorId).Result;
+            var _collaborator = _rep.GetByEmail(collaborator.Email).Result;
             await _rep.Remove(_collaborator);
             return collaborator;
         }
@@ -41,18 +46,18 @@ namespace CoodeshTest.Application.App
             await _rep.Update(_collaborator);
             return collaborator;
         }
-
-        public async Task<CollaboratorDto> GetById(int? collaboratorId)
+        public async Task<CollaboratorDto> GetByEmail(string? collaboratorEmail)
         {
-            var _collaborator = await _rep.GetById(collaboratorId);
+            var _collaborator = await _rep.GetByEmail(collaboratorEmail);
             return _map.Map<CollaboratorDto>(_collaborator);
         }
 
-        public async Task<IEnumerable<CollaboratorDto>> GetCollaborators()
+        public async Task<IEnumerable<CollaboratorDto>> GetCollaborator(CollaboratorDto collaborator)
         {
-            var collaborator = await _rep.GetCollaborator();
-            return _map.Map<IEnumerable<CollaboratorDto>>(collaborator);
+            var _collaborator = _map.Map<Collaborator>(collaborator);
+            var dados = await _rep.GetCollaborator(_collaborator);
+            return _map.Map<IEnumerable<CollaboratorDto>>(dados);
         }
-        
+
     }
 }

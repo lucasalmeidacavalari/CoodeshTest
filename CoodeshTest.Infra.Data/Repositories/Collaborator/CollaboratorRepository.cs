@@ -39,14 +39,14 @@ namespace CoodeshTest.Infra.Data.Repositories
             return collaborator;
         }
 
-        public async Task<Collaborator> GetById(int? collaboratorId)
+        public async Task<Collaborator> GetByEmail(string? collaboratorEmail)
         {
-            return await _ctx.Collaborators.FindAsync(collaboratorId);
+            return await _ctx.Collaborators.Where(_ => _.Email == collaboratorEmail).SingleOrDefaultAsync();
         }
 
-        public async Task<IEnumerable<Collaborator>> GetCollaborator()
+        public async Task<IEnumerable<Collaborator>> GetCollaborator(Collaborator collaborator)
         {
-            return await _ctx.Collaborators.ToListAsync();
+            return await _ctx.Collaborators.Where(_=> _.Email == collaborator.Email && _.Password == collaborator.Password).ToListAsync();
         }
         
     }

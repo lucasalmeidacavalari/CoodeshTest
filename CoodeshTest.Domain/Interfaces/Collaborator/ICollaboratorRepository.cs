@@ -9,8 +9,8 @@ namespace CoodeshTest.Domain.Interfaces
 {
     public interface ICollaboratorRepository
     {
-        Task<IEnumerable<Collaborator>> GetCollaborator();
-        Task<Collaborator> GetById(int? collaboratorId);
+        Task<IEnumerable<Collaborator>> GetCollaborator(Collaborator collaborator);
+        Task<Collaborator> GetByEmail(string? collaboratorEmail);
         Task<Collaborator> Add(Collaborator collaborator);
         Task<Collaborator> Update(Collaborator collaborator);
         Task<Collaborator> Remove(Collaborator collaborator);

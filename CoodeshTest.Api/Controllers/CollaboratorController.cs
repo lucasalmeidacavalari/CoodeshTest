@@ -17,14 +17,14 @@ namespace CoodeshTest.Api.Controllers
         [HttpGet]
         public async Task<IActionResult> Get([FromQuery] CollaboratorDto filters)
         {
-            var collaborator = await _app.GetCollaborators();
+            var collaborator = await _app.GetCollaborator(filters);
             return new JsonResult(collaborator);
         }
 
-        [HttpGet("{id}")]
-        public async Task<IActionResult> Get(int id)
+        [HttpGet("{email}")]
+        public async Task<IActionResult> Get(string email)
         {
-            var collaborator = await _app.GetById(id);
+            var collaborator = await _app.GetByEmail(email);
             return new JsonResult(collaborator);
         }
 
