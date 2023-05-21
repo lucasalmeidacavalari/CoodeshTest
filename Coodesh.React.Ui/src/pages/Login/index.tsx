@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import CryptoJS from 'crypto-js';
 import axios from 'axios';
 import config from '../../appsettings.json'
 
@@ -13,11 +14,17 @@ export default function Login() {
 
   async function handleLogin(e: any) {
     e.preventDefault();
-    axios.get(apiUrl + '/Collaborator?Email=' + email + '&Password=' + password)
+    axios.get(apiUrl + '/Collaborator/' + email)
       .then(response => {
-        if (response.data[0]) {
+        const decrypted = CryptoJS.AES.decrypt(response.data.password, password).toString(CryptoJS.enc.Utf8);
+        if (decrypted === 'coodesh') {
+          const userData = {
+            email: email,
+            senha: response.data.password
+          }
+          localStorage.setItem("@detailUser", JSON.stringify(userData))
           navigate('/home', { replace: true })
-        }else{
+        } else {
           alert("Usuario Incorreto!")
         }
       })

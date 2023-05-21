@@ -1,5 +1,6 @@
 import './register.scss';
 import { useState } from 'react';
+import CryptoJS from 'crypto-js';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import config from '../../appsettings.json'
@@ -12,9 +13,15 @@ export default function Register() {
 
   async function handleRegister(e: any) {
     e.preventDefault();
-    axios.post(apiUrl + '/Collaborator', { Email: email, Password: password })
+    const passwordCrypto = CryptoJS.AES.encrypt('coodesh', password).toString();
+    axios.post(apiUrl + '/Collaborator', { Email: email, Password: passwordCrypto })
       .then(response => {
         navigate('/home', { replace: true })
+        const userData = {
+          email: email,
+          senha: passwordCrypto
+        }
+        localStorage.setItem("@detailUser", JSON.stringify(userData))
       })
       .catch(error => {
         console.log(error)
