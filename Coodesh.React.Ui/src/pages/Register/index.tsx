@@ -16,7 +16,7 @@ export default function Register() {
     const passwordCrypto = CryptoJS.AES.encrypt('coodesh', password).toString();
     axios.post(apiUrl + '/Collaborator', { Email: email, Password: passwordCrypto })
       .then(response => {
-        navigate('/home', { replace: true })
+        navigate('/login', { replace: true })
         const userData = {
           email: email,
           senha: passwordCrypto
@@ -30,11 +30,11 @@ export default function Register() {
   }
 
   return (
-    <div className="container-home" onSubmit={handleRegister}>
+    <div className="container-login" onSubmit={handleRegister}>
       <h1>Coodesh Test</h1>
       <span>Crie uma nova conta!</span>
 
-      <form className='form-home'>
+      <form className='form-login'>
         <input type="email" placeholder='Digite seu email...' name="email" id="email" value={email} onChange={e => setEmail(e.target.value)} />
         <input type="password" placeholder='*****' name="password" id="password" value={password} onChange={e => setPassword(e.target.value)} />
         <button type="submit">Registrar</button>

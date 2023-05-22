@@ -34,11 +34,11 @@ export default function Login() {
   }
 
   return (
-    <div className="container-home" onSubmit={handleLogin}>
+    <div className="container-login" onSubmit={handleLogin}>
       <h1>Coodesh Test</h1>
       <span>Aplicação para exportação e parsing de arquivo</span>
 
-      <form className='form-home'>
+      <form className='form-login'>
         <input type="email" placeholder='Digite seu email...' name="email" id="email" value={email} onChange={e => setEmail(e.target.value)} />
         <input type="password" placeholder='*****' name="password" id="password" value={password} onChange={e => setPassword(e.target.value)} />
         <button type="submit">Acessar</button>
