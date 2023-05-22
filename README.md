@@ -1,132 +1,71 @@
-# Fullstack Afiliados
+CoodeshTest
+Uma aplicação de exportação e parsing de arquivo e visualização de seus respectivos dados
+Tecnologias
+C#: O projeto CoodeshTest foi desenvolvido utilizando a linguagem de programação C# para a implementação da lógica de negócio e a criação de APIs com o framework ASP.NET Core.
 
-O objetivo desse teste é avaliar as suas habilidades em programação.
+ASP.NET Core: O projeto utiliza o framework ASP.NET Core para o desenvolvimento de APIs RESTful. O ASP.NET Core oferece recursos poderosos para criar serviços web escaláveis e de alto desempenho.
 
-### Antes de começar
- 
-- Prepare o projeto para ser disponibilizado no Github, copiando o conteúdo deste repositório para o seu (ou utilize o fork do projeto e aponte para o Github). Confirme que a visibilidade do projeto é pública (não esqueça de colocar no readme a referência a este challenge);
-- O projeto deve utilizar a Linguagem específica na sua Vaga (caso esteja se candidatando). Por exempo: Python, R, Scala e entre outras;
-- Considere como deadline 5 dias a partir do início do desafio. Caso tenha sido convidado a realizar o teste e não seja possível concluir dentro deste período, avise a pessoa que o convidou para receber instruções sobre o que fazer.
-- Documentar todo o processo de investigação para o desenvolvimento da atividade (README.md no seu repositório); os resultados destas tarefas são tão importantes do que o seu processo de pensamento e decisões à medida que as completa, por isso tente documentar e apresentar os seus hipóteses e decisões na medida do possível.
+Entity Framework Core: O projeto faz uso do Entity Framework Core como um ORM (Object-Relational Mapper) para a camada de acesso a dados. O Entity Framework Core simplifica a interação com o banco de dados, permitindo que você modele os dados usando classes e consultas LINQ.
 
-## Descrição do projeto
+React: O projeto CoodeshTest.React.Ui utiliza a biblioteca React.js para construir a interface de usuário interativa. O React é uma biblioteca JavaScript popular para criação de interfaces de usuário dinâmicas e reativas.
 
-Surgiu uma nova demanda urgente e precisamos de uma área exclusiva para fazer o
-upload de um arquivo das transações feitas na venda de produtos por nossos
-clientes.
+HTML e CSS: Para a estruturação e estilização da interface de usuário, o projeto utiliza as linguagens HTML (HyperText Markup Language) e CSS (Cascading Style Sheets).
 
-Nossa plataforma trabalha no modelo criador-afiliado, sendo assim um criador
-pode vender seus produtos e ter 1 ou mais afiliados também vendendo esses
-produtos, desde que seja paga uma comissão por venda.
+SQL Server: O projeto utiliza o banco de dados SQL Server como armazenamento de dados. O SQL Server é um sistema de gerenciamento de banco de dados relacional robusto e amplamente utilizado.
 
-Sua tarefa é construir uma interface web que possibilite o upload de um arquivo
-de transações de produtos vendidos, normalizar os dados e armazená-los em um
-banco de dados relacional.
+JavaScript e npm: Para gerenciar as dependências do projeto e automatizar tarefas, como compilação e empacotamento dos recursos front-end, são utilizados o JavaScript (para escrever scripts) e o npm (Node Package Manager) como gerenciador de pacotes.
 
-Você deve utilizar o arquivo [sales.txt](sales.txt) para fazer o teste da
-aplicação. O formato esá descrito na seção "Formato do arquivo de entrada".
+Configuração do Projeto CoodeshTest.Api no Visual Studio
+1.1. Abra o Visual Studio.
 
+1.2. Selecione "Arquivo" no menu superior e clique em "Abrir" > "Projeto/Solução".
 
-## Requisitos Funcionais
+1.3. Navegue até a pasta onde o projeto CoodeshTest.Api está localizado e selecione o arquivo .sln (arquivo de solução).
 
-Sua aplicação deve:
+1.4. Aguarde até que o Visual Studio carregue o projeto.
 
-1. Ter uma tela (via formulário) para fazer o upload do arquivo
-2. Fazer o parsing do arquivo recebido, normalizar os dados e armazená-los em um
-   banco de dados relacional, seguindo as definições de interpretação do arquivo
-3. Exibir a lista das transações de produtos importadas por produtor/afiliado,
-   com um totalizador do valor das transações realizadas
-4. Fazer tratamento de erros no backend, e reportar mensagens de erro amigáveis
-   no frontend.
+1.5. No Solution Explorer, clique com o botão direito do mouse no projeto "CoodeshTest.Api" e selecione "Definir como Projeto de Inicialização".
 
-## Requisitos Não Funcionais
+1.6. Verifique se o IIS Express está selecionado no menu suspenso de perfil de depuração, localizado na barra de ferramentas superior.
 
-1. A aplicação deve ser simples de configurar e rodar, compatível com ambiente
-   Unix. Você deve utilizar apenas bibliotecas gratuitas ou livres.
-2. Utilize docker para os diferentes serviços que compõe a aplicação para
-   que funcione facilmente fora do seu ambiente pessoal.
-3. Use qualquer banco de dados relacional.
-4. Use commits pequenos no Git e escreva uma boa descrição para cada um.
-5. Escreva unit tests tanto no backend quanto do frontend.
-6. Faça o código mais legível e limpo possível.
-7. Escreva o código (nomes e comentários) em inglês. A documentação pode ser em
-   português se preferir.
+1.7. Pressione F5 ou clique em "Iniciar Depuração" para executar o projeto CoodeshTest.Api no IIS Express.
 
-## Requisitos Bônus
+1.8. O projeto CoodeshTest.Api será iniciado e estará pronto para receber solicitações.
 
-Sua aplicação não precisa, mas ficaremos impressionados se ela:
+Configuração do Projeto CoodeshTest.React.Ui com o npm
+2.1. Abra o prompt de comando ou terminal.
 
-1. Tiver documentação das APIs do backend.
-2. Utilizar docker-compose para orquestar os serviços num todo.
-3. Ter testes de integração ou end-to-end.
-4. Tiver toda a documentação escrita em inglês fácil de entender. 
-5. Lidar com autenticação e/ou autorização.
+2.2. Navegue até a pasta onde o projeto CoodeshTest.React.Ui está localizado.
 
-## Formato do arquivo de entrada
+2.3. Execute o seguinte comando para instalar as dependências do projeto:
 
-| Campo    | Início | Fim | Tamanho | Descrição                      |
-| -------- | ------ | --- | ------- | ------------------------------ |
-| Tipo     | 1      | 1   | 1       | Tipo da transação              |
-| Data     | 2      | 26  | 25      | Data - ISO Date + GMT          |
-| Produto  | 27     | 56  | 30      | Descrição do produto           |
-| Valor    | 57     | 66  | 10      | Valor da transação em centavos |
-| Vendedor | 67     | 86  | 20      | Nome do vendedor               |
+npm i
+2.4. Após a conclusão da instalação das dependências, execute o seguinte comando para iniciar o projeto de interface de usuário React:
+npm start
+2.5. O projeto CoodeshTest.React.Ui será compilado e iniciado. O navegador padrão será aberto automaticamente exibindo a interface de usuário React.
 
-### Tipos de transação
+Criação do Banco de Dados e Ajuste da String de Conexão
+3.1. Abra o Visual Studio.
 
-Esses são os valores possíveis para o campo Tipo:
+3.2. Certifique-se de que o projeto CoodeshTest.Infra.Data esteja incluído na solução. Se não estiver incluído, siga as etapas mencionadas anteriormente para adicionar o projeto à solução.
 
-| Tipo | Descrição         | Natureza | Sinal |
-| ---- | ----------------- | -------- | ----- |
-| 1    | Venda produtor    | Entrada  | +     |
-| 2    | Venda afiliado    | Entrada  | +     |
-| 3    | Comissão paga     | Saída    | -     |
-| 4    | Comissão recebida | Entrada  | +     |
+3.3. No Visual Studio, abra o "Package Manager Console" selecionando "Ferramentas" > "Gerenciador de Pacotes NuGet" > "Console do Gerenciador de Pacotes".
 
-## Avaliação
+3.4. No "Package Manager Console", certifique-se de que o projeto padrão seja definido como "CoodeshTest.Infra.Data".
 
-Seu projeto será avaliado de acordo com os seguintes critérios:
+3.5. Execute o seguinte comando para criar o banco de dados e aplicar as migrações:
+update-database
 
-1. Documentação do setup do ambiente e execução que rode a aplicação com
-   sucesso.
-2. Cumprimento dos [requisitos funcionais](#Requisitos-Funcionais) e
-   [não funcionais](#Requisitos-Nao-Funcionais).
-3. Boa estruturação do componentes e layout de código, mas sem over engineering.
-3. Legibilidade do código.
-4. Boa cobertura de testes.
-5. Claridade e extensão da documentação.
-6. Cumprimento de algum [requisito bônus](#Requisitos-Bonus).
+3.6. Após a conclusão da migração do banco de dados, navegue até a pasta onde o projeto CoodeshTest.Api está localizado.
 
-## Readme do Repositório
+3.7. Abra o arquivo "appsettings.json" localizado na raiz do projeto.
 
-- Deve conter o título do projeto
-- Uma descrição sobre o projeto em frase
-- Deve conter uma lista com linguagem, framework e/ou tecnologias usadas
-- Como instalar e usar o projeto (instruções)
-- Não esqueça o [.gitignore](https://www.toptal.com/developers/gitignore)
-- Se está usando github pessoal, referencie que é um challenge by coodesh:  
+3.8. Procure a seção "ConnectionStrings" no arquivo "appsettings.json".
 
->  This is a challenge by [Coodesh](https://coodesh.com/)
+3.9. Ajuste a string de conexão para apontar para o banco de dados criado. Substitua as informações necessárias, como o nome do servidor, o nome do banco de dados, o nome de usuário e a senha.
 
-## Finalização e Instruções para a Apresentação
+3.10. Salve as alterações no arquivo "appsettings.json".
 
-Avisar sobre a finalização e enviar para correção.
+3.11. Reinicie o projeto CoodeshTest.Api para aplicar as alterações na string de conexão.
 
-1. Confira se você respondeu o Scorecard anexado na Vaga que se candidatou;
-2. Confira se você respondeu o Mapeamento anexado na Vaga que se candidatou;
-3. Acesse [https://coodesh.com/challenges/review](https://coodesh.com/challenges/review);
-4. Adicione o repositório com a sua solução;
-5. Grave um vídeo, utilizando o botão na tela de solicitar revisão da Coodesh, com no máximo 5 minutos, com a apresentação do seu projeto. Utilize o tempo para:
-- Explicar o objetivo do desafio
-- Quais tecnologias foram utilizadas
-- Mostrar a aplicação em funcionamento
-- Foque em pontos obrigatórios e diferenciais quando for apresentar.
-6. Adicione o link da apresentação do seu projeto no README.md.
-7. Verifique se o Readme está bom e faça o commit final em seu repositório;
-8. Confira a vaga desejada;
-9. Envie e aguarde as instruções para seguir no processo. Sucesso e boa sorte. =)
-
-## Suporte
-
-Use a [nossa comunidade](https://discord.gg/rdXbEvjsWu) para tirar dúvidas sobre o processo ou envie uma mensagem diretamente a um especialista no chat da plataforma. 
-
+Parabéns! Você configurou com sucesso o projeto CoodeshTest no Visual Studio, iniciou o projeto de interface de usuário React e criou o banco de dados usando as migrações. Agora você pode começar a trabalhar no projeto CoodeshTest.
