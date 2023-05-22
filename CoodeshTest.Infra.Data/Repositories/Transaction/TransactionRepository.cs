@@ -2,6 +2,7 @@
 using CoodeshTest.Domain.Interfaces;
 using CoodeshTest.Infra.Data.Context;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 
 namespace CoodeshTest.Infra.Data.Repositories
 {
@@ -34,15 +35,26 @@ namespace CoodeshTest.Infra.Data.Repositories
             return transaction;
         }
 
-        public async Task<Transaction> GetById(int? transactionId)
+        public async Task<IEnumerable<Transaction>> GetById(int? transactionId, string name)
         {
-            return await _ctx.Transactions.Include(_ => _.Creator).Include(_ => _.Product).Include(_ => _.Affiliated).Where(_ => _.TransactionId == transactionId).SingleOrDefaultAsync();
+            if (name == "Creator")
+            {
+                return await _ctx.Transactions.Include(_ => _.Creator).Include(_ => _.Product).Include(_ => _.Affiliated).Where(_ => _.CreatorId == transactionId).ToListAsync();
+            }
+            else if (name == "Affiliated")
+            {
+                return await _ctx.Transactions.Include(_ => _.Creator).Include(_ => _.Product).Include(_ => _.Affiliated).Where(_ => _.AffiliatedId == transactionId).ToListAsync();
+            }
+            else
+            {
+                return await _ctx.Transactions.Include(_ => _.Creator).Include(_ => _.Product).Include(_ => _.Affiliated).ToListAsync();
+            }
         }
 
         public async Task<IEnumerable<Transaction>> GetTransactions()
         {
             return await _ctx.Transactions.Include(_ => _.Creator).Include(_ => _.Product).Include(_ => _.Affiliated).ToListAsync();
         }
-        
+
     }
 }

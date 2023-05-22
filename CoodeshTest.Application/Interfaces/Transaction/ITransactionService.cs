@@ -10,7 +10,7 @@ namespace CoodeshTest.Application.Interfaces
     public interface ITransactionService
     {
         Task<IEnumerable<TransactionDto>> GetTransactions();
-        Task<TransactionDto> GetById(int? transactionId);
+        Task<IEnumerable<TransactionDto>> GetById(int? transactionId, string name);
         Task<TransactionDto> Add(TransactionDto transaction);
         Task<TransactionDto> Update(TransactionDto transaction);
         Task<TransactionDto> Remove(TransactionDto transaction);

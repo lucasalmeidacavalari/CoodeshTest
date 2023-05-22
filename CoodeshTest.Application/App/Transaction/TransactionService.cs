@@ -30,9 +30,7 @@ namespace CoodeshTest.Application.App
         }
         public async Task<TransactionDto> Remove(TransactionDto transaction)
         {
-            var _transaction = _rep.GetById(transaction.TransactionId).Result;
-            await _rep.Remove(_transaction);
-            return transaction;
+            return null;
         }
 
         public async Task<TransactionDto> Update(TransactionDto transaction)
@@ -42,10 +40,10 @@ namespace CoodeshTest.Application.App
             return transaction;
         }
 
-        public async Task<TransactionDto> GetById(int? transactionId)
+        public async Task<IEnumerable<TransactionDto>> GetById(int? transactionId, string name)
         {
-            var _transaction = await _rep.GetById(transactionId);
-            return _map.Map<TransactionDto>(_transaction);
+            var _transaction = await _rep.GetById(transactionId, name);
+            return _map.Map<IEnumerable<TransactionDto>>(_transaction);
         }
 
         public async Task<IEnumerable<TransactionDto>> GetTransactions()

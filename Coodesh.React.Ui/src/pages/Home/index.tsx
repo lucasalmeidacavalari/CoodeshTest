@@ -3,6 +3,7 @@ import './home.scss';
 import GridCard from '../../components/GridCard';
 import config from '../../appsettings.json';
 import { processFileContent } from '../../util/fileUtil';
+import GridFileFormat from '../../components/GridFileFormat';
 
 export default function Home() {
   const apiUrl = config.ConfigSettings.DEFAULT;
@@ -47,6 +48,8 @@ export default function Home() {
       <form className='home-form' onSubmit={handleSubmit}>
         <label htmlFor="dados">Selecione um arquivo:</label>
         <input type="file" name="dados" id="dados" onChange={handleFileChange} /><br />
+
+        <GridFileFormat />
 
         <button type="submit" className='btn-register' disabled={enviado}>
           {enviado ? 'Enviando...' : 'Carregar'}

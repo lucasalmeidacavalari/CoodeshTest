@@ -24,7 +24,7 @@ export default function Register() {
         localStorage.setItem("@detailUser", JSON.stringify(userData))
       })
       .catch(error => {
-        console.log(error)
+        console.error(error)
         alert("A dados inexistente ou E-mail já cadastrado!");
       });
   }

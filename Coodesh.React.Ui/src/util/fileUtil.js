@@ -23,44 +23,58 @@ export async function processFileContent(content, apiUrl) {
         // 5º Intervalo: Início 67 e Fim 86
         const seller = linha.slice(66, 86);
 
-        try {
-            if (type === 1) {
-                let data = await axios.get(apiUrl + '/Creator/' + seller);
-                if (!data.data) {
-                    data = await axios.post(apiUrl + '/Creator', { Name: seller });
+        if (!type || !date || !product || !price || !seller) {
+            alert("Arquivo com dados invalidos, erro linha: " + (i + 1))
+        } else {
+            try {
+                if (type === 1 || type === 4) {
+                    let data = await axios.get(apiUrl + '/Creator/' + seller);
+                    if (!data.data) {
+                        data = await axios.post(apiUrl + '/Creator', { Name: seller });
+                    }
+                    sellerExist = data.data;
+                } else {
+                    let data = await axios.get(apiUrl + '/Affiliated/' + seller);
+                    if (!data.data) {
+                        data = await axios.post(apiUrl + '/Affiliated', { Name: seller });
+                    }
+                    sellerExist = data.data;
                 }
-                sellerExist = data.data;
-            } else {
-                let data = await axios.get(apiUrl + '/Affiliated/' + seller);
+            } catch (error) {
+                console.error(error);
+            }
+            try {
+                let data = await axios.get(apiUrl + '/Product/' + product);
                 if (!data.data) {
-                    data = await axios.post(apiUrl + '/Affiliated', { Name: seller });
+                    data = await axios.post(apiUrl + '/Product', { Name: product });
                 }
-                sellerExist = data.data;
+                productExist = data.data;
+            } catch (error) {
+                console.error(error);
             }
-        } catch (error) {
-            console.error(error);
-        }
-        try {
-            let data = await axios.get(apiUrl + '/Product/' + product);
-            if (!data.data) {
-                data = await axios.post(apiUrl + '/Product', { Name: product });
+            try {
+                if (type === 1) {
+                    await axios.post(apiUrl + '/Transaction', { DateTransaction: date, Price: price, Type: type, CreatorId: sellerExist.creatorId, ProductId: productExist.productId })
+                } else if (type === 2) {
+                    await axios.post(apiUrl + '/Transaction', { DateTransaction: date, Price: price, Type: type, AffiliatedId: sellerExist.affiliatedId, ProductId: productExist.productId })
+                } else if (type === 3) {
+                    await axios.post(apiUrl + '/Transaction', { DateTransaction: date, Price: price, Type: type, AffiliatedId: sellerExist.affiliatedId, ProductId: productExist.productId })
+                } else {
+                    await axios.post(apiUrl + '/Transaction', { DateTransaction: date, Price: price, Type: type, CreatorId: sellerExist.creatorId, ProductId: productExist.productId })
+                }
+            } catch (error) {
+                console.error(error);
             }
-            productExist = data.data;
-        } catch (error) {
-            console.error(error);
-        }
-        try {
-            if (type === 1) {
-                await axios.post(apiUrl + '/Transaction', { DateTransaction: date, Price: price, Type: type, CreatorId: sellerExist.creatorId, ProductId: productExist.productId })
-            } else if (type === 2) {
-                await axios.post(apiUrl + '/Transaction', { DateTransaction: date, Price: price, Type: type, AffiliatedId: sellerExist.affiliatedId, ProductId: productExist.productId })
-            } else if (type === 3) {
-                await axios.post(apiUrl + '/Transaction', { DateTransaction: date, Price: price, Type: type, AffiliatedId: sellerExist.affiliatedId, ProductId: productExist.productId })
-            } else {
-                await axios.post(apiUrl + '/Transaction', { DateTransaction: date, Price: price, Type: type, CreatorId: sellerExist.creatorId, ProductId: productExist.productId })
-            }
-        } catch (error) {
-            console.error(error);
         }
     }
 }
+
+export function formatDate(isoDate) {
+    const date = new Date(isoDate);
+    const day = date.getDate().toString().padStart(2, '0');
+    const month = (date.getMonth() + 1).toString().padStart(2, '0');
+    const year = date.getFullYear().toString();
+
+    return `${day}/${month}/${year}`;
+}
+
