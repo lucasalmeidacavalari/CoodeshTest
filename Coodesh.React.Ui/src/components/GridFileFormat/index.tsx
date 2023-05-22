@@ -1,5 +1,5 @@
 import './GridFileFormat.scss';
-
+import { Tooltip as ReactTooltip } from 'react-tooltip'
 
 export default function GridFileFormat() {
     return (<div className='file-format'>
@@ -20,7 +20,9 @@ export default function GridFileFormat() {
                     <td>1</td>
                     <td>1</td>
                     <td>1</td>
-                    <td>Tipo da transação</td>
+                    <td data-tooltip-content="1 - Venda produtor&#13;&#10; 2 - Venda afiliado&#13;&#10; 3 - Comissão paga&#13;&#10; 4 - Comissão recebida" data-tooltip-id="my-tooltip" className="tooltip-cell">
+                        Tipo da transação
+                    </td>
                 </tr>
                 <tr>
                     <td>Data</td>
@@ -52,5 +54,6 @@ export default function GridFileFormat() {
                 </tr>
             </tbody>
         </table>
+        <ReactTooltip id="my-tooltip" />
     </div>)
 }
