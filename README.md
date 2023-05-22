@@ -54,7 +54,7 @@ Uma aplicação de exportação e parsing de arquivo e visualização de seus re
 
 5. O projeto CoodeshTest.React.Ui será compilado e iniciado. O navegador padrão será aberto automaticamente exibindo a interface de usuário React.
 
-## Criação do Banco de
+## Criação do Banco de Dados
 
  Dados e Ajuste da String de Conexão
 
