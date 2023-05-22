@@ -1,6 +1,6 @@
 # CoodeshTest
 
-Uma aplicação de exportação e parsing de arquivo e visualização de seus respectivos dados.
+Uma interface web que possibilite o upload de um arquivo de transações de produtos vendidos, normalizar os dados e armazená-los em um banco de dados relacional e apresenta-los.
 
 ## Tecnologias
 
