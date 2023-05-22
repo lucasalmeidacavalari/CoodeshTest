@@ -14,6 +14,7 @@ namespace CoodeshTest.Domain.Entities
         public int TransactionId { get; private set; }
         public DateTime DateTransaction { get; private set; }
         public decimal Price { get; private set; }
+        public int Type { get; set; }
         public int? CreatorId { get; set; }
         public Creator? Creator { get; set; }
         public int? AffiliatedId { get; set; }

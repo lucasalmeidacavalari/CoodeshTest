@@ -20,11 +20,12 @@ namespace CoodeshTest.Application.App
         {
             var _creator = _map.Map<Creator>(creator);
             await _rep.Add(_creator);
+            creator.CreatorId = _creator.CreatorId;
             return creator;
         }
         public async Task<CreatorDto> Remove(CreatorDto creator)
         {
-            var _creator = _rep.GetById(creator.CreatorId).Result;
+            var _creator = _rep.GetByName(creator.Name).Result;
             await _rep.Remove(_creator);
             return creator;
         }
@@ -36,9 +37,9 @@ namespace CoodeshTest.Application.App
             return creator;
         }
 
-        public async Task<CreatorDto> GetById(int? creatorId)
+        public async Task<CreatorDto> GetByName(string Name)
         {
-            var creator = await _rep.GetById(creatorId);
+            var creator = await _rep.GetByName(Name);
             return _map.Map<CreatorDto>(creator);
         }
 

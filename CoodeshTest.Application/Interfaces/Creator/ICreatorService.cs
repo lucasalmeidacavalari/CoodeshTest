@@ -10,7 +10,7 @@ namespace CoodeshTest.Application.Interfaces
     public interface ICreatorService
     {
         Task<IEnumerable<CreatorDto>> GetCreatorsAsync();
-        Task<CreatorDto> GetById(int? creatorId);
+        Task<CreatorDto> GetByName(string Name);
         Task<CreatorDto> Add(CreatorDto creator);
         Task<CreatorDto> Update(CreatorDto creator);
         Task<CreatorDto> Remove(CreatorDto creator);

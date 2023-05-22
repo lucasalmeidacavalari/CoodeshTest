@@ -27,11 +27,12 @@ namespace CoodeshTest.Application.App
         {
             var _product = _map.Map<Product>(product);
             await _rep.Add(_product);
+            product.ProductId = _product.ProductId;
             return product;
         }
         public async Task<ProductDto> Remove(ProductDto product)
         {
-            var _product = _rep.GetById(product.ProductId).Result;
+            var _product = _rep.GetByName(product.Name).Result;
             await _rep.Remove(_product);
             return product;
         }
@@ -43,9 +44,9 @@ namespace CoodeshTest.Application.App
             return product;
         }
 
-        public async Task<ProductDto> GetById(int? productId)
+        public async Task<ProductDto> GetByName(string? name)
         {
-            var _product = await _rep.GetById(productId);
+            var _product = await _rep.GetByName(name);
             return _map.Map<ProductDto>(_product);
         }
 

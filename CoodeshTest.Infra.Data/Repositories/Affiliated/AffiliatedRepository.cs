@@ -43,9 +43,9 @@ namespace CoodeshTest.Infra.Data.Repositories
         {
             return await _ctx.Affiliates.ToListAsync();
         }
-        public async Task<Affiliated> GetById(int? affiliatedId)
+        public async Task<Affiliated> GetByName(string name)
         {
-            return await _ctx.Affiliates.FindAsync(affiliatedId);
+            return await _ctx.Affiliates.Where(_ => _.Name.Contains(name)).SingleOrDefaultAsync();
         }
 
     }

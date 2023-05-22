@@ -16,7 +16,7 @@ export default function Register() {
     const passwordCrypto = CryptoJS.AES.encrypt('coodesh', password).toString();
     axios.post(apiUrl + '/Collaborator', { Email: email, Password: passwordCrypto })
       .then(response => {
-        navigate('/login', { replace: true })
+        navigate('/home', { replace: true })
         const userData = {
           email: email,
           senha: passwordCrypto

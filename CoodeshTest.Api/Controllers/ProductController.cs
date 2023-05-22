@@ -33,10 +33,10 @@ namespace CoodeshTest.Api.Controllers
         }
 
 
-        [HttpGet("{id}")]
-        public async Task<IActionResult> Get(int id)
+        [HttpGet("{name}")]
+        public async Task<IActionResult> Get(string name)
         {
-            var products = await _app.GetById(id);
+            var products = await _app.GetByName(name);
             var jsonOptions = new JsonSerializerOptions
             {
                 PropertyNamingPolicy = JsonNamingPolicy.CamelCase,

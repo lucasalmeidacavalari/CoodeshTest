@@ -39,9 +39,9 @@ namespace CoodeshTest.Infra.Data.Repositories
             return product;
         }
 
-        public async Task<Product> GetById(int? productId)
+        public async Task<Product> GetByName(string? name)
         {
-            return await _ctx.Products.Include(_ => _.Creator).Where(_ => _.ProductId == productId).SingleOrDefaultAsync();
+            return await _ctx.Products.Where(_ => _.Name.Contains(name)).SingleOrDefaultAsync();
         }
 
         public async Task<IEnumerable<Product>> GetProducts()

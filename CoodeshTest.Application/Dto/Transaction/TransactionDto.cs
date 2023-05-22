@@ -9,6 +9,7 @@ namespace CoodeshTest.Application.Dto
     {
         public int TransactionId { get; set; }
         public DateTime DateTransaction { get; set; }
+        public int Type { get; set; }
         [Column(TypeName = "decimal(18,2)")]
         [DisplayFormat(DataFormatString = "{0:C2}")]
         [DataType(DataType.Currency)]

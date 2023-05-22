@@ -14,6 +14,7 @@ namespace CoodeshTest.Infra.Data.EntitiesConfiguration
         {
             builder.HasKey(t => t.TransactionId);
             builder.Property(p => p.DateTransaction);
+            builder.Property(p => p.Type);
             builder.Property(p => p.Price).HasPrecision(10,2);
             builder.HasOne<Creator>(t => t.Creator)
                    .WithMany(c => c.Transactions)

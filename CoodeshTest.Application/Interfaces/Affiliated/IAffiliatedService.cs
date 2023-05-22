@@ -10,7 +10,7 @@ namespace CoodeshTest.Application.Interfaces
     public interface IAffiliatedService
     {
         Task<IEnumerable<AffiliatedDto>> GetAffiliateds();
-        Task<AffiliatedDto> GetById(int? affiliatedId);
+        Task<AffiliatedDto> GetByName(string? Name);
         Task<AffiliatedDto> Add(AffiliatedDto affiliated);
         Task<AffiliatedDto> Update(AffiliatedDto affiliated);
         Task<AffiliatedDto> Remove(AffiliatedDto affiliated);

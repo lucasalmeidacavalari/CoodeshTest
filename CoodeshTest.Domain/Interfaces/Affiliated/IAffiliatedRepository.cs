@@ -10,7 +10,7 @@ namespace CoodeshTest.Domain.Interfaces
     public interface IAffiliatedRepository
     {
         Task<IEnumerable<Affiliated>> GetAffiliateds();
-        Task<Affiliated> GetById(int? affiliatedId);
+        Task<Affiliated> GetByName(string Name);
         Task<Affiliated> Add(Affiliated affiliated);
         Task<Affiliated> Update(Affiliated affiliated);
         Task<Affiliated> Remove(Affiliated affiliated);

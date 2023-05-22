@@ -20,11 +20,12 @@ namespace CoodeshTest.Application.App
         {
             var _affiliated = _map.Map<Affiliated>(affiliated);
             await _rep.Add(_affiliated);
+            affiliated.AffiliatedId = _affiliated.AffiliatedId;
             return affiliated;
         }
         public async Task<AffiliatedDto> Remove(AffiliatedDto affiliated)
         {
-            var _affiliated = _rep.GetById(affiliated.AffiliatedId).Result;
+            var _affiliated = _rep.GetByName(affiliated.Name).Result;
             await _rep.Remove(_affiliated);
             return affiliated;
         }
@@ -42,9 +43,9 @@ namespace CoodeshTest.Application.App
             return _map.Map<IEnumerable<AffiliatedDto>>(affiliateds);
         }
 
-        public async Task<AffiliatedDto> GetById(int? affiliatedId)
+        public async Task<AffiliatedDto> GetByName(string Name)
         {
-            var affiliated = await _rep.GetById(affiliatedId);
+            var affiliated = await _rep.GetByName(Name);
             return _map.Map<AffiliatedDto>(affiliated);
         }
         

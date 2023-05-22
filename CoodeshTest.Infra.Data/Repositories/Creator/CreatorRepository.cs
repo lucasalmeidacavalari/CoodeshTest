@@ -34,9 +34,9 @@ namespace CoodeshTest.Infra.Data.Repositories
             return creator;
         }
 
-        public async Task<Creator> GetById(int? creatorId)
+        public async Task<Creator> GetByName(string name)
         {
-            return await _ctx.Creators.FindAsync(creatorId);
+            return await _ctx.Creators.Where(c => c.Name.Contains(name)).FirstOrDefaultAsync();
         }
 
         public async Task<IEnumerable<Creator>> GetCreatorsAsync()

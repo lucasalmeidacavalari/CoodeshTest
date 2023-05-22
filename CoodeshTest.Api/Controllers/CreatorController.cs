@@ -21,10 +21,10 @@ namespace CoodeshTest.Api.Controllers
             return new JsonResult(creators);
         }
 
-        [HttpGet("{id}")]
-        public async Task<IActionResult> Get(int id)
+        [HttpGet("{Name}")]
+        public async Task<IActionResult> Get(string Name)
         {
-            var creators = await _app.GetById(id);
+            var creators = await _app.GetByName(Name);
             return new JsonResult(creators);
         }
 
