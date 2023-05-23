@@ -4,9 +4,11 @@ import GridCard from '../../components/GridCard';
 import config from '../../appsettings.json';
 import { processFileContent } from '../../util/fileUtil';
 import GridFileFormat from '../../components/GridFileFormat';
+import { useNavigate } from 'react-router-dom';
 
 export default function Home() {
   const apiUrl = config.ConfigSettings.DEFAULT;
+  const navigate = useNavigate();
   const [arquivo, setArquivo] = useState<null>(null);
   const [enviado, setEnviado] = useState(false);
   const [recarregarPagina, setRecarregarPagina] = useState(false);
@@ -35,6 +37,11 @@ export default function Home() {
     }
   };
 
+  const handleLogout = async () => {
+    localStorage.removeItem("@detailUser");
+    navigate('/', { replace: true })
+  }
+
   useEffect(() => {
     if (recarregarPagina) {
       window.location.reload();
@@ -57,6 +64,8 @@ export default function Home() {
       </form>
 
       <GridCard />
+
+      <button className='btn-logout' onClick={handleLogout}>Sair</button>
     </div>
   );
 }

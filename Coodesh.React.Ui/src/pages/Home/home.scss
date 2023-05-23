@@ -37,3 +37,20 @@
     background-color: #235bd1;
 }
 
+.btn-logout{
+    position: absolute;
+    bottom: 5%;
+    right: 2%;
+    height: 60px;
+    width: 60px;
+    border-radius: 30px;
+    border: 0;
+    font-weight: bold;
+    background-color: #b60f17;
+    color: #ccc;
+}
+
+.btn-logout:hover{
+    background-color: #d80c16;
+    color: #fff;
+}

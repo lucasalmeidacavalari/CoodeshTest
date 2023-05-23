@@ -25,11 +25,11 @@ export default function Login() {
           localStorage.setItem("@detailUser", JSON.stringify(userData))
           navigate('/home', { replace: true })
         } else {
-          alert("Usuario Incorreto!")
+          alert("Senha Incorreto!")
         }
       })
       .catch(error => {
-        alert(error);
+        alert("Usuario não cadastrado!");
       });
   }
 
