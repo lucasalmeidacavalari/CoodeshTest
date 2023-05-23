@@ -11,24 +11,33 @@ export default function Register() {
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [showSnackbar, setShowSnackbar] = useState(false); 
+  const [showSnackbar, setShowSnackbar] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
 
   async function handleRegister(e: any) {
-    setShowSnackbar(false);
     e.preventDefault();
-    const passwordCrypto = CryptoJS.AES.encrypt('coodesh', password).toString();
-    axios.post(apiUrl + '/Collaborator', { Email: email, Password: passwordCrypto })
-      .then(response => {
-        navigate('/home', { replace: true })
-        const userData = {
-          email: email,
-          senha: passwordCrypto
-        }
-        localStorage.setItem("@detailUser", JSON.stringify(userData))
-      })
-      .catch(error => {
-        setShowSnackbar(true);
-      });
+    if (password !== '' && email !== '') {
+      const passwordCrypto = CryptoJS.AES.encrypt('coodesh', password).toString();
+      axios.post(apiUrl + '/Collaborator', { Email: email, Password: passwordCrypto })
+        .then(response => {
+          navigate('/home', { replace: true })
+          const userData = {
+            email: email,
+            senha: passwordCrypto
+          }
+          localStorage.setItem("@detailUser", JSON.stringify(userData))
+        })
+        .catch(error => {
+          setErrorMessage("E-mail já cadastrado!")
+          setShowSnackbar(true);
+        });
+    } else {
+      setErrorMessage("E-mail ou senha invalidos!")
+      setShowSnackbar(true);
+    }
+    setTimeout(() => {
+      setShowSnackbar(false);
+    }, 3000);
   }
 
   return (
@@ -47,7 +56,7 @@ export default function Register() {
       </Link>
 
       {showSnackbar && (
-        <Snackbar message="Existem dados inválidos ou o e-mail já está cadastrado!" duration={3000} />
+        <Snackbar message={errorMessage} duration={3000} />
       )}
     </div>
   );
