@@ -35,7 +35,7 @@ export default function Login() {
       })
       .catch(error => {
         setShowSnackbar(true);
-        setErrorMessage("Usuario não cadastrado!");
+        setErrorMessage("Usuario não cadastrado ou E-mail invalido!");
       });
   }
 
