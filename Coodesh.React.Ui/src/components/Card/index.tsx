@@ -3,13 +3,16 @@ import axios from 'axios';
 import './card.scss';
 import config from '../../appsettings.json';
 import { formatDate } from '../../util/fileUtil';
+import Snackbar from '../SnackBar';
 
 const Card = ({ CreatorId, AffiliatedId }: any) => {
   const [data, setData] = useState<any>();
+  const [showSnackbar, setShowSnackbar] = useState(false);
   const apiUrl = config.ConfigSettings.DEFAULT;
 
   useEffect(() => {
     const getDados = async () => {
+      setShowSnackbar(false);
       try {
         let response;
         if (CreatorId) {
@@ -21,8 +24,7 @@ const Card = ({ CreatorId, AffiliatedId }: any) => {
         }
         setData(response.data);
       } catch (error) {
-        console.error(error);
-        alert(error);
+        setShowSnackbar(true);
       }
     };
 
@@ -59,6 +61,10 @@ const Card = ({ CreatorId, AffiliatedId }: any) => {
             </div>
           ))}
         </div>
+
+        {showSnackbar && (
+          <Snackbar message="Não foi possivel encontrar transições!" duration={3000} />
+        )}
       </div>
     );
   }

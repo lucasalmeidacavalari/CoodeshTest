@@ -3,29 +3,37 @@ import axios from 'axios';
 import config from '../../appsettings.json';
 import Card from '../Card';
 import './gridcard.scss';
+import Snackbar from '../SnackBar';
 
 export default function GridCard() {
   const apiUrl = config.ConfigSettings.DEFAULT;
   const [creator, setCreator] = useState<{ creatorId: number; name: string }[]>();
   const [affiliated, setAffiliated] = useState<{ affiliatedId: number; name: string }[]>();
   const [selectedValue, setSelectedValue] = useState('');
-  const [cardToRender, setCardToRender] = useState<JSX.Element | null>(null); // Define o tipo de cardToRender
+  const [cardToRender, setCardToRender] = useState<JSX.Element | null>(null);
+  const [showSnackbar, setShowSnackbar] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
+
+
 
   useEffect(() => {
     function getDados() {
+      setShowSnackbar(false);
       axios.get(apiUrl + '/Affiliated')
         .then(response => {
           setAffiliated(response.data);
         })
         .catch(error => {
-          alert(error);
+          setShowSnackbar(true);
+          setErrorMessage("Error ao tentar encontrar Afiliados");
         });
       axios.get(apiUrl + '/Creator')
         .then(response => {
           setCreator(response.data);
         })
         .catch(error => {
-          alert(error);
+          setShowSnackbar(true);
+          setErrorMessage("Error ao tentar encontrar Criadores");
         });
     }
     getDados();
@@ -63,6 +71,10 @@ export default function GridCard() {
       <div className='card-container'>
         {cardToRender}
       </div>
+
+      {showSnackbar && (
+        <Snackbar message={errorMessage} duration={3000} />
+      )}
     </article>
   );
 }

@@ -5,14 +5,18 @@ import axios from 'axios';
 import config from '../../appsettings.json'
 
 import './login.scss';
+import Snackbar from '../../components/SnackBar';
 
 export default function Login() {
   const apiUrl = config.ConfigSettings.DEFAULT;
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [showSnackbar, setShowSnackbar] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
 
   async function handleLogin(e: any) {
+    setShowSnackbar(false);
     e.preventDefault();
     axios.get(apiUrl + '/Collaborator/' + email)
       .then(response => {
@@ -25,11 +29,13 @@ export default function Login() {
           localStorage.setItem("@detailUser", JSON.stringify(userData))
           navigate('/home', { replace: true })
         } else {
-          alert("Senha Incorreto!")
+          setShowSnackbar(true);
+          setErrorMessage("Senha incorreta!");
         }
       })
       .catch(error => {
-        alert("Usuario não cadastrado!");
+        setShowSnackbar(true);
+        setErrorMessage("Usuario não cadastrado!");
       });
   }
 
@@ -47,6 +53,10 @@ export default function Login() {
       <Link className='button-link' to={'/register'}>
         Não possui uma conta ? Cadastra-se!
       </Link>
+
+      {showSnackbar && (
+        <Snackbar message={errorMessage} duration={3000} />
+      )}
     </div>
   );
 }
